@@ -70,6 +70,9 @@ int strLen(const char *str);
 int strLenNoS(const char *str);
 
 void freeArr(char **arrs);
+void freeGlobal();
+void freeStack();
+
 void debugMem(char *str);
 void debugFile(FILE *fptr, const char *str);
 void debugMemArr(char **str);

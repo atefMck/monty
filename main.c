@@ -11,11 +11,6 @@ gdata_t *globaldata;
 
 int main(int argc, char const *argv[])
 {
-if (argc != 2)
-{
-fprintf(stderr, "USAGE: monty file\n");
-exit(EXIT_FAILURE);
-}
 stack_t *stack = NULL;
 size_t i = 0, j = 1;
 char *token, *aux, **instrucs;
@@ -25,6 +20,11 @@ instruction_t opcodes[] = {
 {"pall", pall},
 {NULL, NULL}
 };
+if (argc != 2)
+{
+fprintf(stderr, "USAGE: monty file\n");
+exit(EXIT_FAILURE);
+}
 globaldata = &init;
 globaldata->filepath = strCat(globaldata->filepath, argv[1]);
 instrucs = fixSpace(fileHandle(globaldata->filepath));
@@ -50,5 +50,7 @@ i++;
 }
 free(aux);
 }
+freeStack();
+freeGlobal();
 freeArr(instrucs);
 }
