@@ -66,6 +66,7 @@ void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **top, unsigned int line_number);
 void pop(stack_t **top, unsigned int line_number);
+void swap(SP stack_t **top, SP unsigned int line_number);
 
 char *strCat(const char *str1, const char *str2);
 char *strCatNoS(const char *str1, const char *str2);
