@@ -50,7 +50,7 @@ i++;
 }
 free(aux);
 }
-freeStack();
-freeGlobal();
-freeArr(instrucs);
+/** freeStack();
+    freeGlobal();
+    freeArr(instrucs); */
 }

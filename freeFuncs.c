@@ -23,7 +23,6 @@ void freeGlobal()
 {
 free(globaldata->filepath);
 free(globaldata->number);
-free(globaldata);
 }
 
 /**
