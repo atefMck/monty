@@ -57,3 +57,14 @@ printf("%d\n", newStack->n);
 newStack = newStack->prev;
 }
 }
+
+/**
+* pint - prints stack on top
+* @top: the top of the stack
+* @line_number: value of arguments
+* Return: exit status.
+*/
+void pint(__attribute__((unused)) stack_t **top, __attribute__((unused))unsigned int line_number)
+{
+printf("%d\n", globaldata->top->n);
+}

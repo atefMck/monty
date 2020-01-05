@@ -18,6 +18,7 @@ gdata_t init = {"", NULL, "", 0, NULL, NULL, 1};
 instruction_t opcodes[] = {
 {"push", push},
 {"pall", pall},
+{"pint", pint},
 {NULL, NULL}
 };
 if (argc != 2)
