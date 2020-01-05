@@ -16,7 +16,7 @@ size_t i = 0, j = 1;
 char *token, *aux, *code, **instrucs;
 gdata_t init = {"", NULL, "", 0, NULL, NULL, 1};
 instruction_t opcodes[] = { {"push", push}, {"pall", pall}, {"pint", pint},
-{NULL, NULL}
+ {"pop", pop}, {NULL, NULL}
 };
 debugUsage(argc);
 globaldata = &init;

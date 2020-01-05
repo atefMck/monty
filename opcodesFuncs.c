@@ -73,3 +73,24 @@ exit(EXIT_FAILURE);
 }
 printf("%d\n", globaldata->top->n);
 }
+
+/**
+* pint - prints stack on top
+* @top: the top of the stack
+* @line_number: value of arguments
+* Return: exit status.
+*/
+void pop(SP stack_t **top, SP unsigned int line_number)
+{
+stack_t *po;
+if (!globaldata->top)
+{
+fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+exit(EXIT_FAILURE);
+}
+po = globaldata->top;
+globaldata->top = globaldata->top->prev;
+globaldata->top->next = NULL;
+free(po);
+
+}
