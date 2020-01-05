@@ -1,4 +1,6 @@
-    push 4
+pint
+push 6
+pint
 push 5
-push     456
+push 4
 pint

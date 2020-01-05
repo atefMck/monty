@@ -66,5 +66,10 @@ newStack = newStack->prev;
 */
 void pint(SP stack_t **top, SP unsigned int line_number)
 {
+if (!globaldata->top)
+{
+fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+exit(EXIT_FAILURE);
+}
 printf("%d\n", globaldata->top->n);
 }
