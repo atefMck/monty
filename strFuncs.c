@@ -1,4 +1,4 @@
-#include "header.h"
+#include "monty.h"
 
 /**
 * strCat - Concatinates two strings with manual allocation.

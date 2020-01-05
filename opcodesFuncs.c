@@ -1,4 +1,4 @@
-#include "header.h"
+#include "monty.h"
 
 /**
  * push - pushes into the stack at the top
@@ -42,6 +42,8 @@ void push(stack_t **top, unsigned int line_number){
 
 void pall(stack_t **top, unsigned int line_number){
   stack_t *newStack;
+  if (*top == NULL)
+  return;
   newStack = (*top);
   while (newStack) {
     printf("%d\n", newStack->n);

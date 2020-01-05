@@ -1,4 +1,4 @@
-#include "header.h"
+#include "monty.h"
 
 /**
  * fileHandle - handles Monty file
