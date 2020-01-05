@@ -71,5 +71,8 @@ int strLenNoS(const char *str);
 
 void freeArr(char **arrs);
 void debugMem(char *str);
+void debugFile(FILE *fptr, const char *str);
+void debugMemArr(char **str);
+void debugMemStack(stack_t *stack);
 
 #endif

@@ -7,15 +7,11 @@
 */
 char **fileHandle(const char *path)
 {
-globaldata->fileadress = fopen(path, "r");
-if (!globaldata->fileadress)
-{
-fprintf(stderr, "Error: Can't open file <%s>\n", globaldata->filepath);
-exit(EXIT_FAILURE);
-}
 char *linestr = NULL, *token, **instruct;
 size_t linestrsize = 0;
 int linesize;
+globaldata->fileadress = fopen(path, "r");
+debugFile(globaldata->fileadress, path);
 globaldata->linecount = 0;
 linesize = getline(&linestr, &linestrsize, globaldata->fileadress);
 while (linesize >= 0)
@@ -24,11 +20,7 @@ globaldata->linecount++;
 linesize = getline(&linestr, &linestrsize, globaldata->fileadress);
 }
 instruct = malloc(sizeof(char *) * globaldata->linecount);
-if (!instruct)
-{
-fprintf(stderr, "Error: malloc failed\n");
-exit(EXIT_FAILURE);
-}
+debugMemArr(instruct);
 rewind(globaldata->fileadress);
 linesize = getline(&linestr, &linestrsize, globaldata->fileadress);
 token = strtok(linestr, "\n");

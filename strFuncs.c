@@ -9,18 +9,11 @@ char **fixSpace(char **arrs)
 {
 char **arrnos;
 arrnos = malloc(sizeof(char *) * globaldata->linecount);
-if (!arrnos)
-{
-fprintf(stderr, "Error: malloc failed\n");
-exit(EXIT_FAILURE);
-}
-
+debugMemArr(arrnos);
 int i;
 int len = globaldata->linecount;
 for (i = 0; i < len; i++)
-{
 arrnos[i] = strCatNoS("", arrs[i]);
-}
 freeArr(arrs);
 return (arrnos);
 }
@@ -87,11 +80,7 @@ s1 = strLen(str1);
 s2 = strLen(str2);
 s3 = s1 + s2 + 1;
 a = malloc(s3);
-if (a == NULL)
-{
-fprintf(stderr, "Error: malloc failed\n");
-exit(EXIT_FAILURE);
-}
+debugMem(a);
 while (*str1 != '\0')
 {
 a[i] = *str1;

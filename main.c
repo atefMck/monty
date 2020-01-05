@@ -50,4 +50,5 @@ i++;
 }
 free(aux);
 }
+freeArr(instrucs);
 }

@@ -12,11 +12,7 @@ stack_t *newStack;
 int number;
 (void) line_number;
 newStack = malloc(sizeof(stack_t));
-if (!newStack)
-{
-fprintf(stderr, "Error: malloc failed\n");
-exit(EXIT_FAILURE);
-}
+debugMemStack(newStack);
 if (globaldata->number[0] == '0')
 number = 0;
 else if (atoi(globaldata->number) == 0)
