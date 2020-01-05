@@ -8,10 +8,10 @@
 char **fixSpace(char **arrs)
 {
 char **arrnos;
+int i = 0;
+int len = globaldata->linecount;
 arrnos = malloc(sizeof(char *) * globaldata->linecount);
 debugMemArr(arrnos);
-int i;
-int len = globaldata->linecount;
 for (i = 0; i < len; i++)
 arrnos[i] = strCatNoS("", arrs[i]);
 freeArr(arrs);
