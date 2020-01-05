@@ -13,8 +13,8 @@ int main(int argc, char const *argv[])
 {
 stack_t *stack = NULL;
 size_t i = 0, j = 1;
-char *token, *aux, **instrucs;
-gdata_t init = {"", NULL, "", 0, NULL, NULL};
+char *token, *aux, *code, **instrucs;
+gdata_t init = {"", NULL, "", 0, NULL, NULL, 1};
 instruction_t opcodes[] = {
 {"push", push},
 {"pall", pall},
@@ -32,7 +32,8 @@ globaldata->top = stack;
 for (j = 0; j < globaldata->linecount; j++)
 {
 aux = strCat("", instrucs[j]);
-token = strtok(aux, " ");
+code = aux;
+token = strtok(code, " ");
 if (strcmp(token, "push") == 0)
 {
 token = strtok(NULL, " ");
@@ -50,7 +51,7 @@ i++;
 }
 free(aux);
 }
-/** freeStack();
-    freeGlobal();
-    freeArr(instrucs); */
+freeArr(instrucs);
+freeStack();
+freeGlobal();
 }

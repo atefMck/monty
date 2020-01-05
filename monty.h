@@ -54,6 +54,7 @@ char *number;
 size_t linecount;
 stack_t *top;
 stack_t *head;
+int v;
 } gdata_t;
 
 extern gdata_t *globaldata;

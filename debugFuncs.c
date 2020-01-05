@@ -9,6 +9,8 @@ void debugMem(char *str)
 {
 if (str == NULL)
 {
+if (globaldata->v == 0)
+fclose(globaldata->fileadress);
 fprintf(stderr, "Error: malloc failed\n");
 exit(EXIT_FAILURE);
 }
@@ -23,6 +25,8 @@ void debugMemArr(char **str)
 {
 if (str == NULL)
 {
+if (globaldata->v == 0)
+fclose(globaldata->fileadress);
 fprintf(stderr, "Error: malloc failed\n");
 exit(EXIT_FAILURE);
 }
