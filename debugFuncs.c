@@ -60,3 +60,17 @@ fprintf(stderr, "Error: Can't open file <%s>\n", path);
 exit(EXIT_FAILURE);
 }
 }
+
+/**
+* debugUsage - verifies true usage
+* @argc: number of arguments
+* Return: void
+**/
+void debugUsage(int argc)
+{
+if (argc != 2)
+{
+fprintf(stderr, "USAGE: monty file\n");
+exit(EXIT_FAILURE);
+}
+}

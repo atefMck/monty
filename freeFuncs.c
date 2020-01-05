@@ -18,10 +18,10 @@ arrs = NULL;
 }
 
 /**
-* freeArr - frees all global data.
+* freeGlobal - frees all global data.
 * Return: void
 **/
-void freeGlobal()
+void freeGlobal(void)
 {
 if (strcmp(globaldata->filepath, "") != 0)
 free(globaldata->filepath);
@@ -33,12 +33,13 @@ free(globaldata->number);
 * freeStack - frees the stack.
 * Return: void
 **/
-void freeStack()
+void freeStack(void)
 {
 stack_t *stack;
 if (!globaldata->top)
 return;
-while (globaldata->top) {
+while (globaldata->top)
+{
 stack = globaldata->top;
 globaldata->top = globaldata->top->prev;
 free(stack);

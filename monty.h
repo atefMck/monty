@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-
+#define SP __attribute__((unused))
 /**
 * struct stack_s - doubly linked list representation of a stack (or queue)
 * @n: integer
@@ -79,5 +79,6 @@ void debugMem(char *str);
 void debugFile(FILE *fptr, const char *str);
 void debugMemArr(char **str);
 void debugMemStack(stack_t *stack);
+void debugUsage(int argc);
 
 #endif

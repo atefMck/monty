@@ -64,7 +64,7 @@ newStack = newStack->prev;
 * @line_number: value of arguments
 * Return: exit status.
 */
-void pint(__attribute__((unused)) stack_t **top, __attribute__((unused))unsigned int line_number)
+void pint(SP stack_t **top, SP unsigned int line_number)
 {
 printf("%d\n", globaldata->top->n);
 }

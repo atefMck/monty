@@ -21,11 +21,7 @@ instruction_t opcodes[] = {
 {"pint", pint},
 {NULL, NULL}
 };
-if (argc != 2)
-{
-fprintf(stderr, "USAGE: monty file\n");
-exit(EXIT_FAILURE);
-}
+debugUsage(argc);
 globaldata = &init;
 globaldata->filepath = strCat(globaldata->filepath, argv[1]);
 instrucs = fixSpace(fileHandle(globaldata->filepath));
@@ -55,4 +51,5 @@ free(aux);
 freeArr(instrucs);
 freeStack();
 freeGlobal();
+return (0);
 }
