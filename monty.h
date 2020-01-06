@@ -67,6 +67,14 @@ void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **top, unsigned int line_number);
 void pop(stack_t **top, unsigned int line_number);
 void swap(SP stack_t **top, SP unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
+void sub(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
+void _div(stack_t **stack, unsigned int line_number);
+void mul(stack_t **stack, unsigned int line_number);
+void mod(stack_t **stack, unsigned int line_number);
+
+
 
 char *strCat(const char *str1, const char *str2);
 char *strCatNoS(const char *str1, const char *str2);
