@@ -39,6 +39,181 @@ newStack->next = NULL;
 }
 
 /**
+* mod - rest of dev of the top two elements of the stack
+* @top: the top of the stack
+* @line_number: value of arguments
+* Return: exit status.
+*/
+
+void mod(SP stack_t **top, SP unsigned int line_number)
+{
+stack_t *po;
+if (!globaldata->top)
+{
+fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+exit(EXIT_FAILURE);
+}
+if (globaldata->top->prev == NULL && globaldata->top == NULL)
+{
+fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
+exit(EXIT_FAILURE);
+}
+if (globaldata->top->n == 0)
+{
+fprintf(stderr, "L%d: division by zero\n", line_number);
+exit(EXIT_FAILURE);
+}
+po = globaldata->top;
+globaldata->top->prev->n = globaldata->top->prev->n % globaldata->top->n;
+globaldata->top = globaldata->top->prev;
+globaldata->top->next = NULL;
+free(po);
+
+}
+
+
+
+/**
+* nop - Nothing
+* @top: the top of the stack
+* @line_number: value of arguments
+* Return: Nothing.
+*/
+
+void nop(SP stack_t **top, SP unsigned int line_number)
+{
+return;
+}
+
+
+
+/**
+* _div - div the top two elements of the stack
+* @top: the top of the stack
+* @line_number: value of arguments
+* Return: exit status.
+*/
+
+void _div(SP stack_t **top, SP unsigned int line_number)
+{
+stack_t *po;
+if (!globaldata->top)
+{
+fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+exit(EXIT_FAILURE);
+}
+if (globaldata->top->prev == NULL && globaldata->top == NULL)
+{
+fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
+exit(EXIT_FAILURE);
+}
+if (globaldata->top->n == 0)
+{
+fprintf(stderr, "L%d: division by zero\n", line_number);
+exit(EXIT_FAILURE);
+}
+po = globaldata->top;
+globaldata->top->prev->n = globaldata->top->prev->n / globaldata->top->n;
+globaldata->top = globaldata->top->prev;
+globaldata->top->next = NULL;
+free(po);
+
+}
+
+
+
+
+/**
+* sub - subs the top two elements of the stack
+* @top: the top of the stack
+* @line_number: value of arguments
+* Return: exit status.
+*/
+
+void sub(SP stack_t **top, SP unsigned int line_number)
+{
+stack_t *po;
+if (!globaldata->top)
+{
+fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+exit(EXIT_FAILURE);
+}
+if (globaldata->top->prev == NULL && globaldata->top == NULL)
+{
+fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
+exit(EXIT_FAILURE);
+}
+po = globaldata->top;
+globaldata->top->prev->n -= globaldata->top->n;
+globaldata->top = globaldata->top->prev;
+globaldata->top->next = NULL;
+free(po);
+
+}
+
+
+
+/**
+* mul - multiplite the top two elements of the stack
+* @top: the top of the stack
+* @line_number: value of arguments
+* Return: exit status.
+*/
+
+void mul(SP stack_t **top, SP unsigned int line_number)
+{
+stack_t *po;
+if (!globaldata->top)
+{
+fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+exit(EXIT_FAILURE);
+}
+if (globaldata->top->prev == NULL && globaldata->top == NULL)
+{
+fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
+exit(EXIT_FAILURE);
+}
+po = globaldata->top;
+globaldata->top->prev->n *= globaldata->top->n;
+globaldata->top = globaldata->top->prev;
+globaldata->top->next = NULL;
+free(po);
+
+}
+
+
+
+
+/**
+* add - adds the top two elements of the stack
+* @top: the top of the stack
+* @line_number: value of arguments
+* Return: exit status.
+*/
+
+void add(SP stack_t **top, SP unsigned int line_number)
+{
+stack_t *po;
+if (!globaldata->top)
+{
+fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+exit(EXIT_FAILURE);
+}
+if (globaldata->top->prev == NULL && globaldata->top == NULL)
+{
+fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
+exit(EXIT_FAILURE);
+}
+po = globaldata->top;
+globaldata->top->prev->n += globaldata->top->n;
+globaldata->top = globaldata->top->prev;
+globaldata->top->next = NULL;
+free(po);
+
+}
+
+
+/**
 * pall - prints all stack
 * @top: the top of the stack
 * @line_number: value of arguments
@@ -57,6 +232,11 @@ printf("%d\n", newStack->n);
 newStack = newStack->prev;
 }
 }
+
+
+
+
+
 
 /**
 * pint - prints stack on top
