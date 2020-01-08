@@ -7,7 +7,7 @@
 */
 char **fileHandle(const char *path)
 {
-char *linestr = NULL, *token, **instruct;
+char *linestr = NULL, *token, **instruct, *aux;
 size_t linestrsize = 0;
 int linesize;
 globaldata->fileadress = fopen(path, "r");
@@ -24,7 +24,8 @@ instruct = malloc(sizeof(char *) * globaldata->linecount);
 debugMemArr(instruct);
 rewind(globaldata->fileadress);
 linesize = getline(&linestr, &linestrsize, globaldata->fileadress);
-token = strtok(linestr, "\n");
+aux = linestr;
+token = strtok(aux, "\n");
 globaldata->linecount = 0;
 while (linesize >= 0)
 {
@@ -33,7 +34,8 @@ debugMem(instruct[globaldata->linecount]);
 instruct[globaldata->linecount] = strCat("", token);
 globaldata->linecount++;
 linesize = getline(&linestr, &linestrsize, globaldata->fileadress);
-token = strtok(linestr, "\n");
+aux = linestr;
+token = strtok(aux, "\n");
 }
 free(linestr);
 linestr = NULL;

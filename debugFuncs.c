@@ -56,7 +56,7 @@ void debugFile(FILE *fptr, const char *path)
 {
 if (!fptr)
 {
-fprintf(stderr, "Error: Can't open file <%s>\n", path);
+fprintf(stderr, "Error: Can't open file %s\n", path);
 exit(EXIT_FAILURE);
 }
 }
