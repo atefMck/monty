@@ -13,10 +13,13 @@ int number;
 (void) line_number;
 newStack = malloc(sizeof(stack_t));
 debugMemStack(newStack);
+if (globaldata->number)
+goto error;
 if (globaldata->number[0] == '0')
 number = 0;
 else if (atoi(globaldata->number) == 0)
 {
+error:
 fprintf(stderr, "L%d: usage: push integer\n", line_number);
 exit(EXIT_FAILURE);
 }
