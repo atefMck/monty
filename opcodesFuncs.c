@@ -13,7 +13,7 @@ int number;
 (void) line_number;
 newStack = malloc(sizeof(stack_t));
 debugMemStack(newStack);
-if (globaldata->number)
+if (!globaldata->number)
 goto error;
 if (globaldata->number[0] == '0')
 number = 0;

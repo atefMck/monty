@@ -12,7 +12,7 @@ gdata_t *globaldata;
 int main(int argc, char const *argv[])
 {
 stack_t *stack = NULL;
-size_t i = 0, j = 1;
+size_t i = 0, j = 0;
 char *token, *aux, *code, **instrucs;
 gdata_t init = {"", NULL, "", 0, NULL, NULL, 1};
 instruction_t opcodes[] = { {"push", push}, {"pall", pall}, {"pint", pint},
@@ -41,8 +41,7 @@ while (opcodes[i].opcode)
 {
 if (strcmp(opcodes[i].opcode, aux) == 0)
 {
-opcodes[i].f(&globaldata->top, j);
-break;
+opcodes[i].f(&globaldata->top, j + 1);
 }
 i++;
 }
