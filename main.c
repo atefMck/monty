@@ -29,6 +29,8 @@ for (j = 0; j < globaldata->linecount; j++)
 aux = strCat("", instrucs[j]);
 code = aux;
 token = strtok(code, " ");
+if (!token)
+goto skip;
 if (strcmp(token, "push") == 0)
 {
 token = strtok(NULL, " ");
@@ -44,6 +46,7 @@ break;
 }
 i++;
 }
+skip:
 free(aux);
 }
 freeArr(instrucs);

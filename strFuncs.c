@@ -32,6 +32,8 @@ char *a;
 s1 = strLenNoS(str1);
 s2 = strLenNoS(str2);
 s3 = s1 + s2 + 1;
+if (s3 == 1)
+return(NULL);
 a = malloc(s3);
 debugMem(a);
 while (*str1 != '\0')
@@ -79,6 +81,8 @@ char *a;
 s1 = strLen(str1);
 s2 = strLen(str2);
 s3 = s1 + s2 + 1;
+if (s3 == 1)
+return(NULL);
 a = malloc(s3);
 debugMem(a);
 while (*str1 != '\0')
