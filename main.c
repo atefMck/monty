@@ -12,12 +12,12 @@ gdata_t *globaldata;
 int main(int argc, char const *argv[])
 {
 stack_t *stack = NULL;
-size_t i = 0, j = 0;
+size_t i = 0, j = 0, ins = 0;
 char *token, *aux, *code, **instrucs;
 gdata_t init = {"", NULL, "", 0, NULL, NULL, 1};
 instruction_t opcodes[] = { {"push", push}, {"pall", pall}, {"pint", pint},
- {"pop", pop}, {"swap", swap}, {"nop", nop}, {"sub", sub}, {"add", add},
- {"div", _div}, {"mul", mul}, {"mod", mod}, {NULL, NULL}
+{"pop", pop}, {"swap", swap}, {"nop", nop}, {"sub", sub}, {"add", add},
+{"div", _div}, {"mul", mul}, {"mod", mod}, {NULL, NULL}
 };
 debugUsage(argc);
 globaldata = &init;
@@ -39,11 +39,19 @@ globaldata->number = strCat("", token);
 i = 0;
 while (opcodes[i].opcode)
 {
+ins = 0;
 if (strcmp(opcodes[i].opcode, aux) == 0)
 {
 opcodes[i].f(&globaldata->top, j + 1);
+ins = 1;
+break;
 }
 i++;
+}
+if (ins == 0)
+{
+fprintf(stderr, "L%ld: unknown instruction %s\n", j + 1, aux);
+exit(EXIT_FAILURE);
 }
 skip:
 free(aux);

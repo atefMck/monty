@@ -9,22 +9,23 @@
 void push(stack_t **top, unsigned int line_number)
 {
 stack_t *newStack;
-int number;
+int number, negzero;
 (void) line_number;
 newStack = malloc(sizeof(stack_t));
 debugMemStack(newStack);
+negzero = globaldata->number[1] == '0' && globaldata->number[0] == '-';
 if (!globaldata->number)
 goto error;
-if (globaldata->number[0] == '0')
+if (globaldata->number[0] == '0' || negzero)
 number = 0;
-else if (atoi(globaldata->number) == 0)
+else if (strConv(globaldata->number) == 0)
 {
 error:
 fprintf(stderr, "L%d: usage: push integer\n", line_number);
 exit(EXIT_FAILURE);
 }
 else
-number = atoi(globaldata->number);
+number = strConv(globaldata->number);
 newStack->n = number;
 if (*top == NULL)
 {
@@ -152,147 +153,4 @@ globaldata->top = globaldata->top->prev;
 globaldata->top->next = NULL;
 free(po);
 
-}
-
-
-
-/**
-* mul - multiplite the top two elements of the stack
-* @top: the top of the stack
-* @line_number: value of arguments
-* Return: exit status.
-*/
-
-void mul(SP stack_t **top, SP unsigned int line_number)
-{
-stack_t *po;
-if (!globaldata->top)
-{
-fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-exit(EXIT_FAILURE);
-}
-if (globaldata->top->prev == NULL && globaldata->top == NULL)
-{
-fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
-exit(EXIT_FAILURE);
-}
-po = globaldata->top;
-globaldata->top->prev->n *= globaldata->top->n;
-globaldata->top = globaldata->top->prev;
-globaldata->top->next = NULL;
-free(po);
-
-}
-
-
-
-
-/**
-* add - adds the top two elements of the stack
-* @top: the top of the stack
-* @line_number: value of arguments
-* Return: exit status.
-*/
-
-void add(SP stack_t **top, SP unsigned int line_number)
-{
-stack_t *po;
-if (!globaldata->top)
-{
-fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-exit(EXIT_FAILURE);
-}
-if (globaldata->top->prev == NULL && globaldata->top == NULL)
-{
-fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
-exit(EXIT_FAILURE);
-}
-po = globaldata->top;
-globaldata->top->prev->n += globaldata->top->n;
-globaldata->top = globaldata->top->prev;
-globaldata->top->next = NULL;
-free(po);
-
-}
-
-
-/**
-* pall - prints all stack
-* @top: the top of the stack
-* @line_number: value of arguments
-* Return: exit status.
-*/
-void pall(stack_t **top, unsigned int line_number)
-{
-stack_t *newStack;
-(void) line_number;
-if (*top == NULL)
-return;
-newStack = (*top);
-while (newStack)
-{
-printf("%d\n", newStack->n);
-newStack = newStack->prev;
-}
-}
-
-
-
-
-
-
-/**
-* pint - prints stack on top
-* @top: the top of the stack
-* @line_number: value of arguments
-* Return: exit status.
-*/
-void pint(SP stack_t **top, SP unsigned int line_number)
-{
-if (!globaldata->top)
-{
-fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-exit(EXIT_FAILURE);
-}
-printf("%d\n", globaldata->top->n);
-}
-
-/**
-* pint - prints stack on top
-* @top: the top of the stack
-* @line_number: value of arguments
-* Return: exit status.
-*/
-void pop(SP stack_t **top, SP unsigned int line_number)
-{
-stack_t *po;
-if (!globaldata->top)
-{
-fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-exit(EXIT_FAILURE);
-}
-po = globaldata->top;
-globaldata->top = globaldata->top->prev;
-globaldata->top->next = NULL;
-free(po);
-
-}
-
-/**
-* pint - prints stack on top
-* @top: the top of the stack
-* @line_number: value of arguments
-* Return: exit status.
-*/
-void swap(SP stack_t **top, SP unsigned int line_number)
-{
-int aux;
-if (!globaldata->top && !globaldata->top->prev)
-{
-fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
-exit(EXIT_FAILURE);
-}
-aux = globaldata->top->n;
-globaldata->top->n = globaldata->top->prev->n;
-globaldata->top->prev->n = aux;
 }

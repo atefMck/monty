@@ -12,7 +12,10 @@ int len = globaldata->linecount;
 if (*arrs == NULL)
 return;
 for (i = 0; i < len; i++)
+{
+if (arrs[i] != NULL)
 free(arrs[i]);
+}
 free(arrs);
 arrs = NULL;
 }

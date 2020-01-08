@@ -74,12 +74,11 @@ void _div(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
 
-
-
 char *strCat(const char *str1, const char *str2);
 char *strCatNoS(const char *str1, const char *str2);
 int strLen(const char *str);
 int strLenNoS(const char *str);
+int strConv(char *a);
 
 void freeArr(char **arrs);
 void freeGlobal();
